@@ -6,12 +6,11 @@ import styled from "styled-components"
 
 const Navbar = () => {
   const [isOpen, setNav] = useState(false)
-  console.log(isOpen)
 
   return (
     <NavWrapper>
       <NavbarHeader isOpen={isOpen} setNav={setNav} />
-      <NavbarLinks />
+      <NavbarLinks isOpen={isOpen} />
       <NavbarIcons />
     </NavWrapper>
   )

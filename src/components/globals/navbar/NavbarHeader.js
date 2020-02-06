@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import logo from "../../../images/logo.svg"
 import { FaAlignRight } from "react-icons/fa"
 import styled from "styled-components"
-
+import { styles } from "../../../utils"
 const NavbarHeader = props => {
   const toggleNav = () => {
     props.setNav(isOpen => !isOpen)
@@ -25,7 +25,7 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   .toggle-icon {
     font-size: 1.75rem;
-    color: yellow;
+    color: ${styles.colors.mainYellow};
     cursor: pointer;
   }
   @media (min-width: 768px) {
