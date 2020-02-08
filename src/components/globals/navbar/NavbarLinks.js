@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 import { styles } from "../../../utils"
 import links from "./links"
-import { transDefault } from "../../../utils/styles"
 
 const NavbarLinks = props => {
   return (
@@ -42,5 +41,18 @@ const LinkWrapper = styled.ul`
   }
   height: ${props => (props.open ? "152px" : "0px")};
   overflow: hidden;
+  ${styles.transObject({
+    time: "1s",
+  })};
+  @media (min-width: 768px) {
+    height: auto;
+    display: flex;
+    margin: 0 auto;
+    .nav-link:hover {
+      background: var(--mainOrange);
+      padding: 0.5rem 1rem 0.5rem 1rem;
+      color: ${styles.colors.mainWhite};
+    }
+  }
 `
 export default NavbarLinks
