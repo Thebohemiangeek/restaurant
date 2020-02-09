@@ -4,27 +4,16 @@ import { useStaticQuery, graphql } from "gatsby"
 import { styles, Section } from "../../utils"
 import Img from "gatsby-image"
 
-const galleryImages = graphql`
-  query {
-    img1: file(relativePath: { eq: "homeGallery/img-1.jpeg" }) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
-      }
-    }
-    img2: file(relativePath: { eq: "homeGallery/img-2.jpeg" }) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
-      }
-    }
-
-    img3: file(relativePath: { eq: "homeGallery/img-3.jpeg" }) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid_tracedSVG
+const responseImage = graphql`
+  {
+    getImages: allFile(filter: { relativeDirectory: { eq: "homeGallery" } }) {
+      edges {
+        node {
+          childImageSharp {
+            fluid(maxWidth: 500) {
+              ...GatsbyImageSharpFluid
+            }
+          }
         }
       }
     }
@@ -32,26 +21,20 @@ const galleryImages = graphql`
 `
 
 const Gallery = () => {
-  const response = useStaticQuery(galleryImages)
-  const image1 = response.img1.childImageSharp.fluid
-  const image2 = response.img2.childImageSharp.fluid
-  const image3 = response.img3.childImageSharp.fluid
+  const response = useStaticQuery(responseImage)
+  const images = response.getImages.edges
 
   return (
     <Section>
       <GalleryWrapper>
-        <div className="item item-1">
-          <Img fluid={image1} />
-          <p className="info">awesome pizza</p>
-        </div>
-        <div className="item item-2">
-          <Img fluid={image2} />
-          <p className="info">awesome roast</p>
-        </div>
-        <div className="item item-3">
-          <Img fluid={image3} />
-          <p className="info">awesome meat</p>
-        </div>
+        {images.map(({ node }, index) => {
+          return (
+            <div key={index} className={`item item-${index + 1}`}>
+              <Img fluid={node.childImageSharp.fluid} />
+              <p className="info">Our menu</p>
+            </div>
+          )
+        })}
       </GalleryWrapper>
     </Section>
   )
