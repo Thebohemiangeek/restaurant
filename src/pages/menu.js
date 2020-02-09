@@ -1,16 +1,27 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { PageHeader, Banner } from "../utils"
-import menuBcg from "../images/bcg/menuBcg.jpeg"
+import { HeaderHero, Banner } from "../utils"
+import { graphql } from "gatsby"
 
-const Menu = () => (
+const Menu = ({ data }) => (
   <Layout>
     <SEO title="Home" />
-    <PageHeader img={menuBcg}>
+    <HeaderHero img={data.menuBcg.childImageSharp.fluid}>
       <Banner title="our menu" />
-    </PageHeader>
+    </HeaderHero>
   </Layout>
 )
+export const query = graphql`
+  query {
+    menuBcg: file(relativePath: { eq: "bcg/menuBcg.jpeg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`
 
 export default Menu

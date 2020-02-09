@@ -1,8 +1,8 @@
 import React from "react"
 import Product from "./Product"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
-import { Section, Title, SectionButton } from "../../utils"
+import { Section, Title } from "../../utils"
 
 const menuItems = graphql`
   {

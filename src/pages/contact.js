@@ -1,16 +1,27 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { PageHeader, Banner } from "../utils"
-import contactBcg from "../images/bcg/contactBcg.jpeg"
+import { HeaderHero, Banner } from "../utils"
+import { graphql } from "gatsby"
 
-const Contact = () => (
+const Contact = ({ data }) => (
   <Layout>
     <SEO title="Home" />
-    <PageHeader img={contactBcg}>
+    <HeaderHero img={data.contactBcg.childImageSharp.fluid}>
       <Banner title="contact us" />
-    </PageHeader>
+    </HeaderHero>
   </Layout>
 )
+export const query = graphql`
+  query {
+    contactBcg: file(relativePath: { eq: "bcg/contactBcg.jpeg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`
 
 export default Contact
