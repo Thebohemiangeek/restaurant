@@ -1,7 +1,8 @@
-import styled from 'styled-components'
-import { styles } from '../utils'
+import styled from "styled-components"
+import { styles } from "../utils"
 const BannerButton = styled.button`
   display: block;
+  font: ${styles.textGothic};
   color: ${styles.colors.mainWhite};
   background: transparent;
   padding: 0.5rem 1rem;

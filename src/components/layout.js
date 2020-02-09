@@ -1,9 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 import "./layout.css"
-/* import "./bootstrap.min.css"  */
 import { createGlobalStyle } from "styled-components"
 import Navbar from "./globals/navbar/Navbar"
+import Footer from "./globals/Footer"
 
 const Layout = ({ children }) => {
   return (
@@ -11,6 +11,7 @@ const Layout = ({ children }) => {
       <GlobalStyle />
       <Navbar />
       {children}
+      <Footer />
     </>
   )
 }

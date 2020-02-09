@@ -1,10 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Caveat&display=swap");
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import url("https://fonts.googleapis.com/css?family=Carrois+Gothic+SC&display=swap");
+
 :root {
   --mainOrange: #e98569;
   --mainWhite: rgb(255, 255, 255);
